@@ -7,51 +7,50 @@
                     <tr>
                         <th>To-Do</th>
                         <th>In Progress</th>
-                        <th>Completed</th>   
+                        <th>Completed</th>
                     </tr>
                 </thead>
-                        <tbody>
-                            <tr >
-                               <td *ngIf='todo'>
-                                   <table>
-                                       <tbody >    
-                                        <tr *ngFor="let c of todo">
-                                            {{c}}
-                                               
-                                        </tr> 
-                                       </tbody>
-                                   </table>
-                               </td>
-                               <td *ngIf='progress'>
-                                    <table>
-                                        <tbody >
-                                         <tr *ngFor="let c of progress">
-                                             {{c}}
-                                             
-                                         </tr>
-                                        </tbody>
-                                    </table>
-                                </td>
-                                <td *ngIf='completed'>
-                                        <table>
-                                            <tbody >
-                                             <tr *ngFor="let c of completed">
-                                                 {{c}}
-                                                 
-                                             </tr>
-                                            </tbody>
-                                        </table>
-                                    </td>
-                                    
-                            </tr>  
-                        </tbody> 
+                <tbody>
+                    <tr>
+                        <td *ngIf='todo'>
+                            <table>
+                                <tbody>
+                                    <tr *ngFor="let c of todo">
+                                        {{c}}
+                                        <button class="btn btn-warning" (click)='updateTodo()'>Modify</button>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                        <td *ngIf='progress'>
+                            <table>
+                                <tbody>
+                                    <tr *ngFor="let c of progress">
+                                        {{c}}
+
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                        <td *ngIf='completed'>
+                            <table>
+                                <tbody>
+                                    <tr *ngFor="let c of completed">
+                                        {{c}}
+
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </td>
+
+                    </tr>
+                </tbody>
             </table>
         </div>
     </div>
     <div class="row">
         <div class="col-lg-4 offset-4">
             <form *ngIf="show" [formGroup]="form" (ngSubmit)="addtask()">
-
                 <label for="my-input">Add Task</label>
                 <input id="my-input" class="form-control" formControlName="task">
                 <label for="my-input">Status</label>
@@ -63,6 +62,18 @@
                 </select>
                 <button class="btn btn-success mt-4" [disabled]=form.invalid>Submit</button>
             </form>
+            <!-- <form *ngIf="modShow" [formGroup]="form" (ngSubmit)="updatetask()">
+                    <label for="my-input">Add Task</label>
+                    <input id="my-input" class="form-control" formControlName="task">
+                    <label for="my-input">Status</label>
+                    <select name="category" formControlName="category" class="form-control">
+                        <option selected="selected" value="">Not Selected</option>
+                        <option value="todo" selected="selected">To-Do</option>
+                        <option value="progress" selected="selected">On-Progress</option>
+                        <option value="completed" selected="selected">Completed</option>
+                    </select>
+                    <button class="btn btn-success mt-4" [disabled]=form.invalid>Submit</button>
+                </form> -->
         </div>
     </div>
 </div>
